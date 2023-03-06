@@ -1,20 +1,20 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUsers } from './store/users';
+import { fetchMovies } from './store/movies';
 import wrs from '../assets/images/wrs.png';
 import { Button, User } from './components';
 import appInfo from '../package.json';
 
 const App = () => {
-  const { users, isLoading, message } = useSelector((state) => state.usersReducer);
+  const { movies, isLoading, message } = useSelector((state) => state.moviesReducer);
   const dispatch = useDispatch();
 
   const renderUser = () => {
     if (isLoading) return <h2>Loading...</h2>;
     if (message) return <h2>{message}</h2>;
     return (
-      <section className="users">
-        {users.length ? users.map((user) => <User key={user.id} user={user} data-testid="user" />) : null}
+      <section className="movies">
+        {movies.length ? movies.map((user) => <User key={user.id} user={user} data-testid="user" />) : null}
       </section>
     );
   };
@@ -50,7 +50,7 @@ const App = () => {
         <Button
           label="Click to run Saga"
           variant="success"
-          onClick={() => dispatch(fetchUsers())}
+          onClick={() => dispatch(fetchMovies())}
           data-testid="succss-btn"
         />
       </section>

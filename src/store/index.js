@@ -1,18 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import { all } from 'redux-saga/effects';
-import usersReducer from './users';
-import { usersSaga } from './users/saga';
+import moviesReducer from './movies';
+import { moviesSaga } from './movies/saga';
 
 function* rootSaga() {
-  yield all([usersSaga()]);
+  yield all([moviesSaga()]);
 }
 
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   reducer: {
-    usersReducer,
+    moviesReducer,
   },
   middleware: [sagaMiddleware],
   devTools: process.env.NODE_ENV !== 'production',
