@@ -26,7 +26,7 @@ const App = () => {
         <Row>
           <Col></Col>
           <Col>
-            <Login setIsAuth={setIsAuth} />
+            <Login setIsAuth={setIsAuth} isAuth={isAuth} />
           </Col>
           <Col></Col>
         </Row>
