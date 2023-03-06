@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const User = ({ user }) => {
-    const { name, email, address: { city, street }, phone } = user;
-    return (
-        <section className="user card">
-            <p>Name: {name}</p>
-            <p>Email: {email}</p>
-            <p>Address: {street}, {city}</p>
-            <p>Phone: {phone}</p>
-        </section>
-    )
-}
+  useEffect(() => {
+    console.log(user);
+    console.log(user, 'e');
+  }, [user]);
+  const { title, name, overview, poster_path } = user;
+  return (
+    <section className="user card">
+      <p>Name: {title || name}</p>
+      <p>Description: {overview.slice(0, 100)}</p>
+      <p>
+        <img src={`https://api.themoviedb.org/${poster_path}`} alt={name} />
+      </p>
+    </section>
+  );
+};
 
 User.propTypes = {
-    user: PropTypes.object.isRequired,
-}
+  user: PropTypes.object.isRequired,
+};
 
 export default User;
