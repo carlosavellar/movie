@@ -1,6 +1,5 @@
 node_modules/
 coverage
-/dist
 /app/__tests__/__snapshots__
 # local env files
 .env
