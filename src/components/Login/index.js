@@ -22,7 +22,7 @@ function Login(props) {
     valueChangeHandler: emailChangedHandler,
     inputBlurHandler: emailBlurHandler,
     reset: resetEmail,
-  } = useInput((value) => validator.isEmail(value));
+  } = useInput((value) => value);
 
   const {
     value: enteredPass,
@@ -42,17 +42,18 @@ function Login(props) {
 
   useEffect(() => {
     setIsAuth(isAuth);
-    console.log(isAuth, 'is logged effect');
+    console.log(enteredEmail, enteredPass, 'is logged effect');
   }, [isAuth, setIsAuth]);
 
   const submitHandler = (event) => {
+    debugger;
     event.preventDefault();
 
     if (!emailIsValid) {
       return;
     }
 
-    if (enteredEmail === 'planatest@planatest.com' && enteredPass === '123456') {
+    if (enteredEmail === 'planetest@planetest.com' && enteredPass === '123456') {
       props.setIsAuth(true);
       setIslooged(true);
       localStorage.setItem('isAuth', true);
@@ -100,7 +101,7 @@ function Login(props) {
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Enter enteredEmail"
+                placeholder="planetest@planetest.com"
                 onChange={emailChangedHandler}
                 onBlur={emailBlurHandler}
                 value={enteredEmail}
@@ -113,7 +114,7 @@ function Login(props) {
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Password"
+                placeholder="123456"
                 onChange={passChangedHandler}
                 onBlur={passBlurHandler}
                 value={enteredPass}

@@ -18,6 +18,7 @@ export const moviesSlice = createSlice({
       state.isLoading = false;
     },
     fetchMoviesReject: (state, { payload }) => {
+      console.log(state.status_message, "e")
       state.isLoading = false;
       state.message = payload;
     },
