@@ -14,6 +14,7 @@ import './App.css';
 
 const App = () => {
   const { movies, isLoading, message } = useSelector((state) => state.moviesReducer);
+  const [loadedMovies, setLoadedMovies] = useState([]);
   const [isAuth, setIsAuth] = useState(false);
 
   const dispatch = useDispatch();
@@ -31,7 +32,11 @@ const App = () => {
           <Col></Col>
         </Row>
       );
-    } else {
+    } else if(!movies){ return (
+      <Row className="movies">
+        <h1>Acesso não autorizado</h1>
+      </Row>
+    );}else {
       return (
         <Row className="movies">
           {movies.length ? movies.map((movie) => <Movie key={movie.id} movie={movie} data-testid="movie" />) : null}
